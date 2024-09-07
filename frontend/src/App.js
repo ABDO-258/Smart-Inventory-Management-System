@@ -1,23 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+import Login from './Login';
+import Products from './Products';
+import Register from './Register';
 
 function App() {
+  const [token, setToken] = useState(null);
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Inventory Management System</h1>
+      {!token ? <Login setToken={setToken} /> : <Products />}
+      <Register />
     </div>
   );
 }
