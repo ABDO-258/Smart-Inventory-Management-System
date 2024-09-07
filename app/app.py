@@ -3,6 +3,7 @@
 
 import os
 from flask import Flask
+from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 from .auth import auth_bp
 from .products import products_bp
@@ -10,6 +11,8 @@ from .products import products_bp
 
 app = Flask(__name__)
 
+# Enable CORS for all routes
+CORS(app)
 # Configurations for JWT
 # Change to environment variable in production
 app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY', 'super-secret')
