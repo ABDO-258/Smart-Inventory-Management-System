@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Login from './Login';
 import Products from './Products';
 import Register from './Register';
+import Footer from './components/Footer';
 
 function App() {
   const [token, setToken] = useState(null);
@@ -15,14 +16,15 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        
       </Routes>
+      <Footer/>
   </Router>
-        <div className="App">
+  
+        {/* <div className="App">
           <h1>Inventory Management System</h1>
           {!token ? <Login setToken={setToken} /> : <Products />}
           <Register />
-        </div>
+        </div>*/}
   </>
   );
 }

@@ -23,13 +23,13 @@ const Home = () => {
 
             {/* Main Content */}
             <main className="main-content">
-                <h1>SIMS</h1>
-                <p>Track shows and movies you watch</p>
+                <h1>Smart Inventory Management System</h1>
+                <p>Track youre products</p>
                 <p>What are you waiting for?</p>
                 <Link to="/start-tracking" className="start-btn">Start Tracking</Link>
             </main>
 
-            {/* Footer */}
+            {/* Footer 
             <footer className="footer">
                 <div className="footer-logo">
                     <i className="fas fa-building"></i> SIMS
@@ -41,7 +41,7 @@ const Home = () => {
                     <i className="fab fa-twitter"></i>
                     <i className="fab fa-linkedin"></i>
                 </div>
-            </footer>
+            </footer>*/}
         </div>
     );
 };

@@ -83,31 +83,3 @@ body, html {
     color: black;
 }
 
-/* Footer */
-.footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #1d1d1d;
-    padding: 20px;
-}
-
-.footer-logo {
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-}
-
-.footer-logo i {
-    margin-right: 10px;
-}
-
-.social-icons i {
-    margin-left: 10px;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-.social-icons i:hover {
-    color: #007bff;
-}
