@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """ module for authentication"""
 
-from flask import Blueprint, request, jsonify
+from datetime import timedelta
+from flask import Blueprint, request, jsonify, make_response
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import jwt_required, get_jwt_identity
@@ -33,6 +34,10 @@ def register():
     if users.find_one({'username': username}):
         return jsonify({'msg': 'User already exists'}), 400
 
+    # Validate required fields
+    if not username or not password:
+        return jsonify({'msg': 'Username and password are required'}), 400
+
     # Hash password and insert user
     hashed_password = generate_password_hash(password)
     users.insert_one(
@@ -60,9 +65,15 @@ def login():
     # Create JWT access token
     access_token = create_access_token(
         identity={'username': username,
-                  'role': user['role']}
+                  'role': user['role']},
+                  expires_delta=timedelta(hours=1)  # Token expires in 1 hour
                    )
-    return jsonify(access_token=access_token), 200
+    # Set token in a cookie (secure, httpOnly)
+    response = make_response(jsonify({"msg": "Login successful"}))
+    response.set_cookie('access_token', access_token,
+                        httponly=True, secure=True)
+
+    return response
 
 
 # Protect a route
